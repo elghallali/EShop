@@ -23,7 +23,7 @@
                         <p>Ops! not exist products in this category</p>
                     {% endif%}
                     {% for product in products %}
-                    <div class="card col-md-6 col-12 col-lg-4 mb-4 text-center shadow bg-gradient bg-primary bg-opacity-25">
+                    <div class="card col-md-6 col-12 col-lg-4 mb-4 text-center shadow bg-gradient bg-primary bg-opacity-10">
                         <a href="{% url 'product-detail' product.id%}" class="btn">
                             <div class="card-body">
                                 <img class="card-img" src="{{product.product_image.url}}" alt="">

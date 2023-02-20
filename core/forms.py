@@ -91,9 +91,9 @@ class PostMessageContactForm(forms.ModelForm):
 
         widgets={
 
-            'name':forms.TextInput(attrs={'placeholder':'Your name', 'aria-label':'Your name','class': 'form-control mt-2 col-lg-6 col-md-6 col-12'}),
+            'name':forms.TextInput(attrs={'placeholder':'Your name', 'aria-label':'Your name','class': 'form-control mt-2'}),
 
-            'email':forms.EmailInput(attrs={'placeholder':'Your email', 'aria-label':'Your email','class': 'form-control mt-2 col-lg-6 col-md-6 col-12'}),
+            'email':forms.EmailInput(attrs={'placeholder':'Your email', 'aria-label':'Your email','class': 'form-control mt-2'}),
 
             'content':forms.Textarea(attrs={'cols':80, 'rows':5, 'class': 'form-control mt-2'}),
 
