@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Product {{pk}} {% endblock title %}
+
+{% block main-content %}
+    <h1 class="ps-3 my-3">Product Details :</h1>
+    <div class="container my-4">
+        <div class="card shadow py-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <img class="card-img border-end" src="{{product.product_image.url}}" alt="">
+
+                    </div>
+                    <div class="col-lg-8 col-12 flex">
+                        <h3 class="card-title fw-bold">{{product.title}}</h3>
+                        <h4 class="card-text fw-bold text-danger">{{product.discounted_price}} DH / <small
+                                class="fw-light text-secondary text-decoration-line-through">{{product.selling_price}} DH</small></h4>
+                        <h5>Product Features</h5>
+                        <p>{{product.description}}</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start align-items-end">
+                            <button type="submit" class="btn btn-danger mb-2"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                            <button type="button" class="btn btn-primary mb-2"><a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-money-check-dollar"></i> Buy Now</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main-content%}
