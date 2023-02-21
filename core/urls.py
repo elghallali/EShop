@@ -17,6 +17,12 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('address/', views.address, name='address'),
     path('update-address/<int:pk>', views.UpdateAddress.as_view(), name='update-address'),
+    path('add-to-cart/', views.add_to_cart, name='add-to-cart'),
+    path('cart/', views.show_cart, name='show-cart'),
+    path('checkout/', views.CheckoutView.as_view(), name='checkout'),
+    path('plus-cart/', views.plus_cart),
+    path('minus-cart/', views.minus_cart),
+    path('remove-cart/', views.remove_cart),
 
 
     # Login authentication

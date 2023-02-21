@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.views import View
-from . models import Product, Customer, PostMessageContact
+from . models import Product, Customer, PostMessageContact, Cart
 from . forms import CustomerRegistrationForm, CustomerProfileForm, PostMessageContactForm
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 
@@ -102,3 +104,90 @@ class UpdateAddress(View):
         else:
             messages.warning(request, 'Invalid Input Data!')
         return redirect('address')
+
+def add_to_cart(request):
+    user = request.user
+    product_id = request.GET.get('prod_id')
+    product = Product.objects.get(id = product_id)
+    Cart(user=user, product=product).save()
+    return redirect('/cart')
+
+def show_cart(request):
+    user = request.user
+    cart = Cart.objects.filter(user=user)
+    amount = 0
+    for p in cart:
+        value = p.quantity * p.product.discounted_price
+        amount += value
+    total_amount = amount + 50.00
+    return render(request, 'add-to-cart.html', locals())
+
+def plus_cart(request):
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity += 1
+        c.save()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount = 0
+        for p in cart:
+            value = p.quantity * p.product.discounted_price
+            amount += value
+        total_amount = amount + 50.00
+        data = {
+            'quantity': c.quantity,
+            'amount': amount,
+            'total_amount': total_amount
+        }
+        return JsonResponse(data)
+
+def minus_cart(request):
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity -= 1
+        c.save()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount = 0
+        for p in cart:
+            value = p.quantity * p.product.discounted_price
+            amount += value
+        total_amount = amount + 50.00
+        data = {
+            'quantity': c.quantity,
+            'amount': amount,
+            'total_amount': total_amount
+        }
+        return JsonResponse(data)
+
+def remove_cart(request):
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.delete()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount = 0
+        for p in cart:
+            value = p.quantity * p.product.discounted_price
+            amount += value
+        total_amount = amount + 50.00
+        data = {
+            'amount': amount,
+            'total_amount': total_amount
+        }
+        return JsonResponse(data)
+
+class CheckoutView(View):
+    def get(self, request):
+        user = request.user
+        add = Customer.objects.filter(user=user)
+        cart_items = Cart.objects.filter(user=user)
+        famount = 0
+        for p in cart_items:
+            value = p.quantity * p.product.discounted_price
+            famount += value
+        total_amount = famount + 50.00
+        return render(request, 'checkout.html', locals())
