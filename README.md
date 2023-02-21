@@ -32,6 +32,7 @@
   
 ## :bookmark_tabs: Description :
 
+> Our e-commerce project named **`IRY Tech`** is based on the sale of electronic materials such as appliances, televisions, cameras, computers...
 
 ## :chains: Development :
 
