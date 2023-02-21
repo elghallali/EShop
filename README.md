@@ -1,5 +1,3 @@
-# IRY Tech :
-
 <div>
   <img src="https://github.com/elghallali/my-images/blob/master/Faculty%20Official/fsjest.jpg" title="fsjest" alt="fsjest" width="150" height="150" align="left"/>
   <img src="https://github.com/elghallali/my-images/blob/master/Faculty%20Official/uae.png" title="UAE" **alt="UAE" width="150" height="150" align="right"/>
@@ -8,12 +6,30 @@
   <img src="https://github.com/elghallali/my-images/blob/master/Faculty%20Official/logo.png" title="DSDS" alt="DSDS" width="400" height="150"/>
 </div>
 
+<div align="center">
+  
+# IRY Tech 
+  
+</div>
+
+<div>
+<div align="left">
+  
+### Carried out by :
 | Student Name   |      APOGEE      |  CNE |
-|----------|:-------------:|------:|
+|----------|:-------------:|:------:|
 | Issam EL MEHDI |  22017585 | P110127478 |
 | Rabia AISSAOUI SLAOUI |    19005290   |   P149016790 |
 | Yassine EL GHALLALI | 22017586 |    Z196800709 |
-
+  
+  </div>
+  <div align="right">
+    
+### Framed by : Lotfi EL AACHAK
+    
+  </div>
+</div>
+  
 ## :bookmark_tabs: Description :
 
 
