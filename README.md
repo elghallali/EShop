@@ -7,30 +7,32 @@
 </div>
 
 <div align="center">
-  
-# IRY Tech 
-  
+
+# IRY Tech
+
 </div>
 
 <div>
-<div align="left">
-  
-### Carried out by :
+  <div align="left">
+
+### Carried out by
+
 | Student Name   |      APOGEE      |  CNE |
 |----------|:-------------:|:------:|
 | Issam EL MEHDI |  22017585 | P110127478 |
 | Rabia AISSAOUI SLAOUI |    19005290   |   P149016790 |
 | Yassine EL GHALLALI | 22017586 |    Z196800709 |
-  
+
   </div>
+
   <div align="right">
-    
+
 ### Framed by : Lotfi EL AACHAK
-    
+
   </div>
 </div>
-  
-## :bookmark_tabs: Description :
+
+## :bookmark_tabs: Description
 
 > In today's digital age, e-commerce has become an integral part of our daily lives. With the growing popularity of online shopping, it's no surprise that many businesses have turned to e-commerce as a way to reach a wider audience and expand their customer base. One such business is **IRY Tech**, an e-commerce project that specializes in the sale of electronic materials such as appliances, televisions, cameras, and computers.
 >
@@ -46,9 +48,9 @@
 >
 > In conclusion, **IRY Tech** is an exceptional e-commerce platform that offers a wide range of electronic materials at competitive prices. Its user-friendly interface, robust customer support, and flexible payment options make it a top choice for online shoppers. If you're in the market for electronic materials, be sure to check out **IRY Tech** for all your shopping needs.
 
-## :chains: Development :
+## :chains: Development
 
-### :hammer_and_wrench: Development Tools :
+### :hammer_and_wrench: Development Tools
 
 <div align="center">
   <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Python" width="60" height="60"/>&nbsp;
@@ -66,16 +68,16 @@
   <img src="https://github.com/devicons/devicon/blob/master/icons/markdown/markdown-original.svg" title="Markdown" alt="Markdown" width="60" height="60"/>&nbsp;
 </div>
 
-### :wrench: Class Diagram :
+### :wrench: Class Diagram
 
 ```mermaid
 classDiagram
     class Product{
         id: int
         title: string
-        seling_price : float
+        selling_price : float
         discounted_price : float
-        discription : string
+        description : string
         category: string
         image_url : string
     }
@@ -84,7 +86,6 @@ classDiagram
         quantity: int
         user : User
         product : Product
-        
     }
     class User{
         id: int
@@ -109,7 +110,6 @@ classDiagram
         zipcode : int
         user : User
     }
-    
     class PostMessageContact{
         id: int
         name: string
@@ -133,10 +133,10 @@ classDiagram
     UserGroups "1..*" .. "*" Group
 ```
 
-### :clipboard: Design :
+### :clipboard: Design
 
-### :gear: development :
+### :gear: development
 
-### :computer: Application :
+### :computer: Application
 
-## :office: Conclusion :
+## :office: Conclusion
