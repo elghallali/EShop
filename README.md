@@ -1,15 +1,16 @@
-# IRY Tech
+# IRY Tech :
 
-## Description
+## :bookmark_tabs: Description :
 
 
-## Development
+## :chains: Development :
 
-### :hammer_and_wrench:Development Tools :
+### :hammer_and_wrench: Development Tools :
 
 <div>
   <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain-wordmark.svg" title="Django" alt="Django" width="40" height="40"/>&nbsp
+  <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain-wordmark.svg" title="Django" alt="Django" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="MySQL" **alt="MySQL" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original-wordmark.svg" title="VSCode" alt="VSCode" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original-wordmark.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
@@ -32,13 +33,13 @@ classDiagram
         discounted_price : float
         discription : string
         category: string
-        
+        image_url : string
     }
     class Cart{
         id: int
         quantity: int
-        user_id : User
-        product_id : Product
+        user : User
+        product : Product
         
     }
     class User{
@@ -54,6 +55,44 @@ classDiagram
         date_joined : Date
         last_login : Date
     }
+    class Customer{
+        id: int
+        name: string
+        locality : string
+        city : string
+        mobile : int
+        state : string
+        zipcode : int
+        user : User
+    }
+    
+    class PostMessageContact{
+        id: int
+        name: string
+        email : string
+        content : string
+        created : Date
+    }
+    class UserGroups{
+        id: int
+        user: User
+        group : Group
+    }
+    class Group{
+        id: int
+        name: string
+    }
     Cart "1" .. "1..*" Product
     Cart "1..*" .. "1" User
+    Customer "*" .. "1" User
+    UserGroups "1..*" .. "*" User
+    UserGroups "1..*" .. "*" Group
 ```
+
+### :clipboard: Design :
+
+### :gear: development :
+
+### :computer: Application :
+
+## :office: Conclusion :
