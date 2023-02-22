@@ -32,6 +32,20 @@
   </div>
 </div>
 
+### Note
+
+> **Dear Reader**,
+>
+> I hope this note finds you well. I wanted to remind you that all the documents and application web that you have been using are meant for study purposes only. It's important to keep in mind that these resources should not be used for any illegal or unethical activities.
+>
+> Furthermore, it's crucial to respect the copyrights and intellectual property rights of the owners of these resources. As such, please refrain from distributing, sharing or using these materials for any commercial or personal gain.
+>
+> I encourage you to use these resources responsibly and make the most out of them for your academic and personal growth. Keep in mind that knowledge is power, and the more you learn, the better equipped you will be to face any challenges that come your way.
+>
+>Best regards,
+>
+> <div align="right"><strong>Our Team</strong></div>
+
 ## :bookmark_tabs: Description
 
 > In today's digital age, e-commerce has become an integral part of our daily lives. With the growing popularity of online shopping, it's no surprise that many businesses have turned to e-commerce as a way to reach a wider audience and expand their customer base. One such business is **IRY Tech**, an e-commerce project that specializes in the sale of electronic materials such as appliances, televisions, cameras, and computers.
