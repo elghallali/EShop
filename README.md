@@ -82,6 +82,8 @@
   <img src="https://github.com/devicons/devicon/blob/master/icons/markdown/markdown-original.svg" title="Markdown" alt="Markdown" width="50" height="50"/>&nbsp;
 </div>
 
+---
+
 ### :wrench: Class Diagram
 
 ```mermaid
@@ -147,10 +149,18 @@ classDiagram
     UserGroups "1..*" .. "*" Group
 ```
 
+---
+
 ### :clipboard: Design
+
+---
 
 ### :gear: development
 
+---
+
 ### :computer: Application
+
+---
 
 ## :office: Conclusion
