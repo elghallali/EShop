@@ -15,26 +15,31 @@
                 </ul>
             </div>
             <div class="col-md-8 offset-md-1">
-                <form action="" method="post" novalidate>
-                    {% csrf_token %}
-                    {% for fm in form %}
-                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors | striptags}}</small><br />
-                    {% endfor %}
-                    <div class="col-12 mt-3 text-end">
-                        <button type="submit" class="btn btn-primary">Update <i class="fa-solid fa-floppy-disk"></i></button>
-                        <a href="{% url 'address'%}" type="button" class="btn btn-danger">Back <i class="fa-solid fa-rotate-left"></i></a>
+                <div class="card shadow">
+                    <div class="card-body bg-primary bg-gradient bg-opacity-10 p-5">
+                        <form action="" method="post" novalidate>
+                            {% csrf_token %}
+                            {% for fm in form %}
+                            {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors | striptags}}</small><br />
+                            {% endfor %}
+                            <div class="col-12 mt-3 text-end">
+                                <button type="submit" class="btn btn-primary">Update <i class="fa-solid fa-floppy-disk"></i></button>
+                                <a href="{% url 'address'%}" type="button" class="btn btn-danger">Back <i
+                                        class="fa-solid fa-rotate-left"></i></a>
+                            </div>
+                            {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <p class="alert alert-danger my-3">{{error}}</p>
+                            {% endfor %}
+                            {% endif %}
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{message.tags}} my-3">{{message}}</div>
+                            {% endfor %}
+                            {% endif %}
+                        </form>
                     </div>
-                    {% if form.non_field_errors %}
-                    {% for error in form.non_field_errors %}
-                    <p class="alert alert-danger my-3">{{error}}</p>
-                    {% endfor %}
-                    {% endif %}
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-{{message.tags}} my-3">{{message}}</div>
-                    {% endfor %}
-                    {% endif %}
-                </form>
+                </div>
             </div>
         </div>
     </div>
