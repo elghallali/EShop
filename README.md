@@ -2,16 +2,22 @@
   <img src="https://github.com/elghallali/my-images/blob/master/Faculty%20Official/fsjest.jpg" title="fsjest" alt="fsjest" width="150" height="150" align="left"/>
   <img src="https://github.com/elghallali/my-images/blob/master/Faculty%20Official/uae.png" title="UAE" **alt="UAE" width="150" height="150" align="right"/>
 </div>
+<br><br>
+<br><br>
+<br><br>
 <div align="center">
   <img src="https://github.com/elghallali/my-images/blob/master/Faculty%20Official/logo.png" title="DSDS" alt="DSDS" width="400" height="150"/>
 </div>
 
+<br>
+<br>
 <div align="center">
 
 # IRY Tech
 
 </div>
 
+<br><br><br>
 <div>
   <div align="left">
 
@@ -66,6 +72,7 @@
 
 ### :hammer_and_wrench: Development Tools
 
+<br>
 <div align="center">
   <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Python" width="50" height="50"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain-wordmark.svg" title="Django" alt="Django" width="50" height="50"/>&nbsp;
@@ -81,6 +88,7 @@
   <img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" title="Figma" alt="Figma" width="50" height="50"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/markdown/markdown-original.svg" title="Markdown" alt="Markdown" width="50" height="50"/>&nbsp;
 </div>
+<br>
 
 ---
 
