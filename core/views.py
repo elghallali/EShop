@@ -5,6 +5,7 @@ from . models import Product, Customer, PostMessageContact, Cart
 from . forms import CustomerRegistrationForm, CustomerProfileForm, PostMessageContactForm
 from django.contrib import messages
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -38,6 +39,9 @@ def shop(request):
 class CategoryView(View):
     def get(self, request, val):
         products = Product.objects.filter(category = val)
+        paginator = Paginator(products, 12) # 10 records per page
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         title = Product.objects.filter(category = val).values('title')
         return render(request, 'category.html', locals())
 

@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-3 col-sm-12 mb-2">
             <h3 class="text-uppercase text-center mb-4">Categories</h3>
-            <div class="list-group mb-4">
+            <div class="list-group mb-4 shadow">
                 <button type="button" class="list-group-item list-group-item-action"><a class="dropdown-item text-uppercase fw-bold" href="{% url 'category' 'PE'%}">Petit Electromenager</a></button>
                 <button type="button" class="list-group-item list-group-item-action"><a class="dropdown-item text-uppercase fw-bold" href="{% url 'category' 'GE'%}">Gros Electromenager</a></button>
                 <button type="button" class="list-group-item list-group-item-action"><a class="dropdown-item text-uppercase fw-bold" href="{% url 'category' 'EM'%}">Entretien de la maison</a></button>
@@ -17,40 +17,56 @@
             </div>
         </div>
         <div class="col-md-9 col-12">
+            {% if page_obj %}
             <div class="container">
                 <div class="row">
-                    {% if product.isEmpty %}
-                        <p>Ops! not exist products in this category</p>
-                    {% endif%}
-                    {% for product in products %}
-                    <div class="col-md-6 col-12 col-lg-4 mb-4">
-                        <div class="card shadow">
-                            <a href="{% url 'product-detail' product.id%}" class="btn bg-gradient bg-primary bg-opacity-10">
-                                <div class="card-body">
-                                    <img class="card-img" src="{{product.product_image.url}}" alt="">
-                                    <h5 class="card-title fw-bold pt-2">{{product.title}}</h5>
-                                    <div class="card-text fw-bold text-danger">{{product.discounted_price}} DH / <small
-                                            class="fw-light text-decoration-line-through">{{product.selling_price}} DH</small></div>
+                        {% for product in page_obj %}
+                            <div class="col-md-6 col-12 col-lg-4 mb-4">
+                                <div class="card shadow">
+                                    <a href="{% url 'product-detail' product.id%}" class="btn bg-gradient bg-primary bg-opacity-10">
+                                        <div class="card-body">
+                                            <img class="card-img" src="{{product.product_image.url}}" alt="">
+                                            <h5 class="card-title fw-bold pt-2">{{product.title}}</h5>
+                                            <div class="card-text fw-bold text-danger">{{product.discounted_price}} DH / <small
+                                                    class="fw-light text-decoration-line-through">{{product.selling_price}} DH</small></div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                    {% endfor %}
+                            </div>
+                        {% endfor %}
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link">Previous</a>
+                                    </li>
+                                {% endif %}
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if num == page_obj.number %}
+                                        <li class="page-item"><a class="page-link active" href="#">{{ num }}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
                 </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
+            {% else %}
+            <div class="card mt-xl-5 shadow">
+                <div class="card-body bg-primary bg-gradient bg-opacity-10 rounded text-center p-5">
+                    <h3>Ops! not exist products in this category</h3>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
