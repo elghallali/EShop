@@ -17,8 +17,8 @@
             <div class="col-md-6 mb-5">
                 <h4>Order Summery</h4>
                 {% for item in cart_items %}
-                    <div class="card mb-2 bg-primary bg-opacity-10 bg-gradient shadow">
-                        <div class="card-body">
+                    <div class="card mb-2 shadow">
+                        <div class="card-body  bg-primary bg-opacity-10 bg-gradient rounded">
                             <div class="row">
                                 <div class="col-4">
                                     <img src="{{item.product.product_image.url}}" alt="" class="img-fluid img-thumbnail shadow" width="150" height="150">
@@ -40,8 +40,8 @@
                 <form method="post" id="myForm">
                     {% csrf_token %}
                     {% for ad in add%}
-                        <div class="card bg-primary bg-opacity-10 bg-gradient shadow">
-                            <div class="card-body">
+                        <div class="card shadow">
+                            <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
                                 <h5>{{ad.name}}</h5>
                                 <p>Mobile: {{ad.mobile}}</p>
                                 <p>{{ad.locality}} {{ad.city}} {{ad.state}} - {{ad.zipcode}}</p>
@@ -65,8 +65,8 @@
                         <button type="submit" class="btn btn-warning fw-bold my-3 px-3">Continue</button>
                     </div>
                 </form>
-                <div class="card bg-primary bg-opacity-10 bg-gradient shadow mt-3">
-                    <div class="card-body">
+                <div class="card shadow mt-3">
+                    <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
                         <div class="row">
                             <div class="col">
                                 <i class="fa-brands fa-cc-paypal fa-2x"></i>
