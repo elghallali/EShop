@@ -20,7 +20,7 @@
                         <h5>Product Features</h5>
                         <p>{{product.description}}</p>
                         <form action="/add-to-cart" class="d-inline">
-                            <input type="hidden" name="prod_id" value="{{product.id}}" />
+                            <input type="hidden" name="product_id" value="{{product.id}}" />
                             <button type="submit" class="btn btn-danger mb-2"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
                         </form>
                         <button type="button" class="btn btn-primary mb-2"><a href="{% url 'show-cart'%}" class="text-white text-decoration-none"><i class="fa-solid fa-money-check-dollar"></i> Buy Now</a></button>

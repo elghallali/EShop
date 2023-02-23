@@ -14,8 +14,9 @@ $('.plus-cart').click(function () {
         success: function (data) {
             console.log("data = ", data);
             elm.innerText = data.quantity
-            document.getElementById('amount').innerText = data.amount
-            document.getElementById('totalamount').innerText = data.total_amount
+            document.getElementById('amount').innerText = data.amount + ' DH'
+            document.getElementById('shipping').innerText = data.shipping + ' DH'
+            document.getElementById('totalamount').innerText = data.total_amount + ' DH'
         }
     })
 
@@ -36,8 +37,9 @@ $('.minus-cart').click(function () {
         success: function (data) {
             console.log("data = ", data);
             elm.innerText = data.quantity
-            document.getElementById('amount').innerText = data.amount
-            document.getElementById('totalamount').innerText = data.total_amount
+            document.getElementById('amount').innerText = data.amount + ' DH'
+            document.getElementById('shipping').innerText = data.shipping + ' DH'
+            document.getElementById('totalamount').innerText = data.total_amount + ' DH'
         }
     })
 
@@ -55,8 +57,9 @@ $('.remove-cart').click(function () {
             prod_id: id
         },
         success: function (data) {
-            document.getElementById('amount').innerText = data.amount
-            document.getElementById('totalamount').innerText = data.total_amount
+            document.getElementById('amount').innerText = data.amount + ' DH'
+            document.getElementById('shipping').innerText = data.shipping + ' DH'
+            document.getElementById('totalamount').innerText = data.total_amount + ' DH'
             elm.parentNode.parentNode.parentNode.parentNode.remove()
         }
     })

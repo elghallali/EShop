@@ -7,96 +7,194 @@
 {% block main-content %}
     <div class="container">
         <div class="row">
-            {% if cart %}
-                <h1 class="text-center my-5">Shopping Cart</h1>
-                <div class="col-md-8 col-12">
-                    <div class="card mb-4 shadow">
-                        <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
-                            <h3>Cart</h3>
-                            {% for item in cart %}
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img src="{{item.product.product_image.url}}" alt="" class="img-fluid img-thumbnail shadow" width="150" height="150">
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div>
-                                            <h5>{{item.product.title}}</h5>
-                                            <p class="small text-muted mb-2">{{item.product.description}}</p>
-                                            <div class="my-3">
-                                                <label for="quantity">Quantity : </label>
-                                                <a class="minus-cart btn" pid="{{item.product.id}}"><i class="fa-solid fa-square-minus fa-lg"></i></a>
-                                                <span id="quantity">{{item.quantity}}</span>
-                                                <a class="plus-cart btn" pid="{{item.product.id}}"><i class="fa-solid fa-square-plus fa-lg"></i></a>
+            {% if request.user.is_authenticated %}
+                {% with cart=request.session.cart %}
+                    {% if cart_items %}
+                            <h1 class="text-center my-5">Shopping Cart</h1>
+                            <div class="col-md-8 col-12">
+                                <div class="card mb-4 shadow">
+                                    <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                        <h3>Cart</h3>
+                                        {% for item in cart_items %}
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img src="{{item.product.product_image.url}}" alt="" class="img-fluid img-thumbnail shadow" width="150" height="150">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div>
+                                                        <h5>{{item.product.title}}</h5>
+                                                        <p class="small text-muted mb-2">{{item.product.description}}</p>
+                                                        <div class="my-3">
+                                                            <label for="quantity">Quantity : </label>
+                                                            <a class="minus-cart btn" pid="{{item.product.id}}"><i class="fa-solid fa-square-minus fa-lg"></i></a>
+                                                            <span id="quantity">{{item.quantity}}</span>
+                                                            <a class="plus-cart btn" pid="{{item.product.id}}"><i class="fa-solid fa-square-plus fa-lg"></i></a>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <a href="#" class="btn btn-danger ms-3 remove-cart" pid="{{item.product.id}}">Remove Item <i class="fa-solid fa-trash"></i></a>
+                                                            <p class="mb-0"><span><strong>{{item.product.discounted_price}} DH</strong></span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr class="mt-3 text-muted">
                                             </div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <a href="#" class="btn btn-danger ms-3 remove-cart" pid="{{item.product.id}}">Remove Item <i class="fa-solid fa-trash"></i></a>
-                                                <p class="mb-0"><span><strong>{{item.product.discounted_price}} DH</strong></span></p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="card mb-4 shadow">
+                                    <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                        <h3>The Total Amount of</h3>
+                                        <ul class="list-group my-3">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-2 pb-0">
+                                                Amount <span id="amount">{{amount}} DH</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-bottom px-2">
+                                                Shipping <span id="shipping">{{shipping}} DH</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-2 mb-3">
+                                                <div>
+                                                    <strong>Total</strong> (including TAX)
+                                                </div>
+                                                <span id="totalamount"><strong>{{total_amount}} DH</strong></span>
+                                            </li>
+                                        </ul>
+                                        <div class="d-grid">
+                                            <a href="{% url 'checkout'%}" class="btn btn-primary">Place Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card my-5 shadow">
+                                    <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                        <div class="row">
+                                            <div class="col">
+                                                <i class="fa-brands fa-cc-paypal fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-google-pay fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-cc-amazon-pay fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-apple-pay fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-cc-mastercard fa-2x"></i>
                                             </div>
                                         </div>
                                     </div>
-                                    <hr class="mt-3 text-muted">
                                 </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12">
-                    <div class="card mb-4 shadow">
-                        <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
-                            <h3>The Total Amount of</h3>
-                            <ul class="list-group my-3">
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-2 pb-0">
-                                    Amount <span id="amount">{{amount}} DH</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-bottom px-2">
-                                    Shipping <span>50.00 DH</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-2 mb-3">
-                                    <div>
-                                        <strong>Total</strong> (including TAX)
+                            </div>
+                        {% else %}
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card my-5 shadow">
+                                            <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                                <h1 class="text-center my-5"> Your cart is empty</h1>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span id="totalamount"><strong>{{total_amount}} DH</strong></span>
-                                </li>
-                            </ul>
-                            <div class="d-grid">
-                                <a href="{% url 'checkout'%}" class="btn btn-primary">Place Order</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card my-5 shadow">
-                        <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
-                            <div class="row">
-                                <div class="col">
-                                    <i class="fa-brands fa-cc-paypal fa-2x"></i>
-                                </div>
-                                <div class="col">
-                                    <i class="fa-brands fa-google-pay fa-2x"></i>
-                                </div>
-                                <div class="col">
-                                    <i class="fa-brands fa-cc-amazon-pay fa-2x"></i>
-                                </div>
-                                <div class="col">
-                                    <i class="fa-brands fa-apple-pay fa-2x"></i>
-                                </div>
-                                <div class="col">
-                                    <i class="fa-brands fa-cc-mastercard fa-2x"></i>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        {% endif %}
+                {% endwith %}
             {% else %}
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card my-5 shadow">
-                                <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
-                                    <h1 class="text-center my-5">Cart is empty</h1>
+                {% with cart=request.COOKIES.cart %}
+                    {% if cart %}
+                        <h1 class="text-center my-5">Shopping Cart</h1>
+                            <div class="col-md-8 col-12">
+                                <div class="card mb-4 shadow">
+                                    <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                        <h3>Cart</h3>
+                                        {% for item in cart %}
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img src="{{item.product.product_image.url}}" alt="" class="img-fluid img-thumbnail shadow" width="150" height="150">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div>
+                                                        <h5>{{item.product.title}}</h5>
+                                                        <p class="small text-muted mb-2">{{item.product.description}}</p>
+                                                        <div class="my-3">
+                                                            <label for="quantity">Quantity : </label>
+                                                            <a class="minus-cart btn" pid="{{item.product.id}}"><i class="fa-solid fa-square-minus fa-lg"></i></a>
+                                                            <span id="quantity">{{item.quantity}}</span>
+                                                            <a class="plus-cart btn" pid="{{item.product.id}}"><i class="fa-solid fa-square-plus fa-lg"></i></a>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <a href="#" class="btn btn-danger ms-3 remove-cart" pid="{{item.product.id}}">Remove Item <i class="fa-solid fa-trash"></i></a>
+                                                            <p class="mb-0"><span><strong>{{item.product.discounted_price}} DH</strong></span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr class="mt-3 text-muted">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="col-md-4 col-12">
+                                <div class="card mb-4 shadow">
+                                    <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                        <h3>The Total Amount of</h3>
+                                        <ul class="list-group my-3">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-2 pb-0">
+                                                Amount <span id="amount">{{amount}} DH</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-bottom px-2">
+                                                Shipping <span id="shipping_price">{{shipping_price}} DH</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-2 mb-3">
+                                                <div>
+                                                    <strong>Total</strong> (including TAX)
+                                                </div>
+                                                <span id="totalamount"><strong>{{total_amount}} DH</strong></span>
+                                            </li>
+                                        </ul>
+                                        <div class="d-grid">
+                                            <a href="{% url 'checkout'%}" class="btn btn-primary">Place Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card my-5 shadow">
+                                    <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                        <div class="row">
+                                            <div class="col">
+                                                <i class="fa-brands fa-cc-paypal fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-google-pay fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-cc-amazon-pay fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-apple-pay fa-2x"></i>
+                                            </div>
+                                            <div class="col">
+                                                <i class="fa-brands fa-cc-mastercard fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {% else %}
+                        <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card my-5 shadow">
+                                            <div class="card-body bg-primary bg-opacity-10 bg-gradient rounded">
+                                                <h1 class="text-center my-5">Your cart is empty</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {% endif %}
+                {% endwith %}
             {% endif %}
         </div>
     </div>

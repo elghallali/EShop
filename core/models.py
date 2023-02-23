@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 CATEGORY_CHOICES = (
     ('PE', 'Petit electromenager'),
-    ('GE', 'Petit electromenager'),
+    ('GE', 'Gros electromenager'),
     ('EM', 'Entretien de la maison'),
     ('TPV', 'TV-Photo-Video'),
     ('I', 'Informatique'),
@@ -64,3 +64,37 @@ class PostMessageContact(models.Model):
     email = models.EmailField(max_length=200)
     content = models.TextField()
     created = models.DateField(auto_now_add=True)
+
+
+class BillingAddress(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    locality = models.CharField(max_length=200)
+    city = models.CharField(max_length=50)
+    mobile = models.IntegerField(default=0)
+    zipcode = models.IntegerField()
+    state = models.CharField(choices=STATE_CHOICES, max_length=100)
+    def __str__(self):
+        return self.user.username
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ref_code = models.CharField(max_length=20, blank=True, null=True)
+    #items = models.ManyToManyField(OrderItem)
+    start_date = models.DateTimeField(auto_now_add=True)
+    ordered_date = models.DateTimeField()
+    ordered = models.BooleanField(default=False)
+    #shipping_address = models.ForeignKey('Address', related_name='shipping_address', on_delete=models.SET_NULL, blank=True, null=True)
+    #billing_address = models.ForeignKey('Address', related_name='billing_address', on_delete=models.SET_NULL, blank=True, null=True)
+'''
+    def __str__(self):
+        return self.user.username
+
+    def get_total(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_final_price()
+        if self.coupon:
+            total -= self.coupon.amount
+        return total
+'''
