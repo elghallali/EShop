@@ -30,7 +30,7 @@ urlpatterns = [
     # Login authentication
     path('customer-registration/', anonymous_required(views.CustomerRegistrationView.as_view()), name='customer-registration'),
     path('accounts/login/', anonymous_required(auth_view.LoginView.as_view(template_name='login.html', authentication_form =LoginForm)), name='login'),
-    path('logout/', auth_view.LogoutView.as_view(next_page='login'), name='logout'),
+    path('logout/', auth_view.LogoutView.as_view(next_page='home'), name='logout'),
 
     # Reset Password
     path('password-reset/', auth_view.PasswordResetView.as_view(template_name='password/password-reset.html', form_class =MyPasswordResetForm), name='password-reset'),
