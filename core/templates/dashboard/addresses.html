@@ -1,0 +1,44 @@
+{% extends 'profile.html' %}
+{% load static %}
+
+{% block title %}Address{% endblock title %}
+
+{% block content %}
+    <div class="row text-end">
+        <div class="col-lg-4 col-md-6">
+            <a href="{% url 'add-address'%}" class="btn btn-primary mb-5">Add a new Address <i class="fa-solid fa-address-book"></i></a>
+        </div>
+    </div>
+    {% if add %}
+    <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <div class="row">
+                    {% for ad in add %}
+                        <div class="col-sm-6">
+                            <div class="card shadow">
+                                <div class="card-body bg-primary bg-opacity-10 bg-gradient">
+                                    <h3>Address {{forloop.counter}}</h3>
+                                    <p>Name: {{ad.name}}</p>
+                                    <p>Locality: {{ad.locality}}</p>
+                                    <p>Mobile: {{ad.mobile}}</p>
+                                    <p>City: {{ad.city}}</p>
+                                    <p>State: {{ad.state}}</p>
+                                    <p>Pincode: {{ad.zipcode}}</p>
+                                    <p class="text-end"><a href="{% url 'update-address' pk=ad.id%}" class="btn btn-success" type="button">Update <i class="fa-solid fa-pen-to-square"></i></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+    {% else %}
+        <div>
+            <div class="card shadow">
+                <div class="card-body bg-primary bg-opacity-10 bg-gradient text-center">
+                    <h3>You don't have any address you can add one if you like</h3>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

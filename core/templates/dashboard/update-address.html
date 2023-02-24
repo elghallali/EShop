@@ -1,22 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'profile.html' %}
 {% load static %}
 {% block title %}Update Address{% endblock title %}
 
-{% block main-content %}
-    <div class="container my-5">
+{% block content %}
         <div class="row">
-            <h3 class="mb-3">Welcome <span class="text-capitalize">{{request.user}}</span></h3>
-        </div>
-        <div class="row">
-            <div class="col-md-2 border-end pe-2">
-                <ul class="list-unstyled">
-                    <li class="d-grid"><a href="{% url 'profile'%}" class="btn btn-primary">Profile</a></li>
-                    <li class="d-grid"><a href="{% url 'address'%}" class="btn ">Address</a></li>
-                </ul>
-            </div>
-            <div class="col-md-8 offset-md-1">
+            <div class="col-md-8 offset-md-2">
                 <div class="card shadow">
                     <div class="card-body bg-primary bg-gradient bg-opacity-10 p-5">
+                        <h4 class="text-center">Update this address</h4>
                         <form action="" method="post" novalidate>
                             {% csrf_token %}
                             {% for fm in form %}
@@ -24,7 +15,7 @@
                             {% endfor %}
                             <div class="col-12 mt-3 text-end">
                                 <button type="submit" class="btn btn-primary">Update <i class="fa-solid fa-floppy-disk"></i></button>
-                                <a href="{% url 'address'%}" type="button" class="btn btn-danger">Back <i
+                                <a href="{% url 'addresses'%}" type="button" class="btn btn-danger">Back <i
                                         class="fa-solid fa-rotate-left"></i></a>
                             </div>
                             {% if form.non_field_errors %}
@@ -42,5 +33,4 @@
                 </div>
             </div>
         </div>
-    </div>
-{% endblock main-content %}
+{% endblock content %}
