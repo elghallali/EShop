@@ -70,6 +70,8 @@
 > Finally, **IRY Tech** is committed to providing its customers with high-quality products at competitive prices. The platform works with some of the most reputable manufacturers in the industry to ensure that customers receive products that are reliable, efficient, and durable. **IRY Tech** also regularly updates its inventory to keep up with the latest trends and technologies in the industry, so customers can always find the newest and most innovative products.
 >
 > In conclusion, **IRY Tech** is an exceptional e-commerce platform that offers a wide range of electronic materials at competitive prices. Its user-friendly interface, robust customer support, and flexible payment options make it a top choice for online shoppers. If you're in the market for electronic materials, be sure to check out **IRY Tech** for all your shopping needs.
+>
+---
 
 ## :chains: Development
 
