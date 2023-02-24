@@ -52,6 +52,9 @@
 >
 > <div align="right"><strong>Our Team</strong></div>
 
+---
+
+
 ## :bookmark_tabs: Description
 
 > In today's digital age, e-commerce has become an integral part of our daily lives. With the growing popularity of online shopping, it's no surprise that many businesses have turned to e-commerce as a way to reach a wider audience and expand their customer base. One such business is **IRY Tech**, an e-commerce project that specializes in the sale of electronic materials such as appliances, televisions, cameras, and computers.
