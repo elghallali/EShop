@@ -3,8 +3,10 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_view
+from django.contrib.auth.decorators import user_passes_test
 from .forms import LoginForm, MyPasswordResetForm, MyPasswordChangeForm, MySetPasswordForm
 
+anonymous_required = user_passes_test(lambda user: not user.is_authenticated, login_url='/')
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -26,8 +28,8 @@ urlpatterns = [
 
 
     # Login authentication
-    path('customer-registration/', views.CustomerRegistrationView.as_view(), name='customer-registration'),
-    path('accounts/login/', auth_view.LoginView.as_view(template_name='login.html', authentication_form =LoginForm), name='login'),
+    path('customer-registration/', anonymous_required(views.CustomerRegistrationView.as_view()), name='customer-registration'),
+    path('accounts/login/', anonymous_required(auth_view.LoginView.as_view(template_name='login.html', authentication_form =LoginForm)), name='login'),
     path('logout/', auth_view.LogoutView.as_view(next_page='login'), name='logout'),
 
     # Reset Password
