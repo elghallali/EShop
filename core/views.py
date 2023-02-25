@@ -69,7 +69,7 @@ class CustomerRegistrationView(View):
 class ProfileView(View):
     def get(self, request):
         form = CustomerProfileForm()
-        return render(request, 'dashboard/add-address.html', locals())
+        return render(request, 'profile/address/add-address.html', locals())
     def post(self, request):
         form =  CustomerProfileForm(request.POST)
         if form.is_valid():
@@ -85,17 +85,17 @@ class ProfileView(View):
             messages.success(request, 'Congratulations! Profile save Successfully')
         else:
             messages.warning(request, 'Invalid Input Data!')
-        return render(request, 'dashboard/add-address.html', locals())
+        return render(request, 'profile/address/add-address.html', locals())
 
 def address(request):
     add = Customer.objects.filter(user = request.user)
-    return render(request, 'dashboard/addresses.html', locals())
+    return render(request, 'profile/address/addresses.html', locals())
 
 class UpdateAddress(View):
     def get(self, request, pk):
         add = Customer.objects.get(pk=pk)
         form = CustomerProfileForm(instance=add)
-        return render(request, 'dashboard/update-address.html', locals())
+        return render(request, 'profile/address/update-address.html', locals())
     def post(self, request, pk):
         form =  CustomerProfileForm(request.POST)
         if form.is_valid():
