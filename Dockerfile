@@ -2,9 +2,11 @@
 FROM python:3.11-alpine
 
 # Add Mysql
-RUN apk add --no-cache mariadb-connector-c-dev build-base && \
+RUN apk update && \
+    apk add --no-cache mariadb-connector-c-dev build-base && \
     apk add --no-cache mysql-client && \
     ln -s /usr/bin/mysql_config /usr/local/bin/mysql_config
+
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -21,6 +23,12 @@ COPY . .
 
 
 # Set environment variables (Define build arguments)
+ENV DB_HOST=localhost
+ENV DB_PORT=3306
+ENV DB_NAME=data
+ENV DB_USER=root
+ENV DB_PASSWORD=
+
 
 # Set up database and run migrations
 RUN python manage.py makemigrations && \
