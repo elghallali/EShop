@@ -9,6 +9,7 @@ services:
       - MYSQL_DATABASE = data
       - MYSQL_USER= data
       - MYSQL_PASSWORD= data
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "3306:3306"
     volumes:
