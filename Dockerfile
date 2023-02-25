@@ -2,7 +2,8 @@
 FROM python:3.11-alpine
 
 # Add Mysql
-RUN apt-get update && apt-get install -y libmysqlclient-dev
+RUN apt-get update && \
+    apt-get install -y libmysqlclient-dev
 
 # Set the working directory inside the container
 WORKDIR /app
