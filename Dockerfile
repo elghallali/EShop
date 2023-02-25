@@ -2,8 +2,9 @@
 FROM python:3.11-alpine
 
 # Add Mysql
-RUN apt-get update && \
-    apt-get install -y libmysqlclient-dev
+RUN apk add --no-cache mariadb-connector-c-dev build-base && \
+    apk add --no-cache mysql-client && \
+    ln -s /usr/bin/mysql_config /usr/local/bin/mysql_config
 
 # Set the working directory inside the container
 WORKDIR /app
