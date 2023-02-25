@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config, Csv
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3-1yo$rcj^(!qyw8!6=+fj!fe$g8@_!6-on!7(pi=1aw2s0*s-'
+SECRET_KEY = config('SECRET_KEY', default=HelloWorld)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+
+# Default allowed hosts
+DEFAULT_ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# Get allowed hosts from environment variable, or use default
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=DEFAULT_ALLOWED_HOSTS, cast=Csv())
 
 
 # Application definition
@@ -77,11 +85,11 @@ WSGI_APPLICATION = 'eshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'e-shop',
-        'USER': 'root',
-        'PASSWORD': '20171987',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': config('DB_NAME', default='data'),
+        'USER': config('DB_USER', default='root'),
+        'PASSWORD': config('DB_PASSWORD', default=''),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='3306'),
     }
 }
 

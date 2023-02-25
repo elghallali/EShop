@@ -10,13 +10,21 @@ COPY requirements.txt .
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the project files to the working directory
+# Copy the rest of the project files to the working directory (Copy application code)
 COPY . .
+
+
+# Set environment variables (Define build arguments)
+
+# Set up database and run migrations
+RUN python manage.py makemigrations && \
+    python manage.py migrate
+
+# Collect static files
+RUN python manage.py collectstatic --noinput
 
 # Expose the default Django server port
 EXPOSE 8000
 
-# Set the environment variables for Django
-
-# Run the command to start the Django server
+# Run the command to start the server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
