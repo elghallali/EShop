@@ -29,11 +29,8 @@ SECRET_KEY = config('SECRET_KEY', default='HelloWorld')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-# Default allowed hosts
-DEFAULT_ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
 # Get allowed hosts from environment variable, or use default
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=DEFAULT_ALLOWED_HOSTS, cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
 
 # Application definition
