@@ -23,22 +23,14 @@ COPY . .
 
 
 # Set environment variables (Define build arguments)
-ENV DB_HOST=localhost
-ENV DB_PORT=3306
-ENV DB_NAME=data
-ENV DB_USER=root
-ENV DB_PASSWORD=
+ENV DB_NAME=mydatabase \
+    DB_USER=myuser \
+    DB_PASSWORD=mypassword \
+    DB_HOST=db \
+    DB_PORT=3306
 
-
-# Set up database and run migrations
-RUN python manage.py makemigrations && \
-    python manage.py migrate
-
-# Collect static files
-RUN python manage.py collectstatic --noinput
-
-# Expose the default Django server port
-EXPOSE 8000
-
-# Run the command to start the server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Run migrations and start the server
+CMD python manage.py makemigrations && \
+    python manage.py migrate && \
+    python manage.py collectstatic --noinput && \
+    python manage.py runserver 0.0.0.0:8000
