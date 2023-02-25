@@ -23,10 +23,10 @@ COPY . .
 
 
 # Set environment variables (Define build arguments)
-ENV DB_NAME=mydatabase \
-    DB_USER=myuser \
-    DB_PASSWORD=mypassword \
-    DB_HOST=db \
+ENV DB_NAME=data \
+    DB_USER=data \
+    DB_PASSWORD=data \
+    DB_HOST=localhost \
     DB_PORT=3306
 
 # Run migrations and start the server
