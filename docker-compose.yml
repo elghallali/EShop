@@ -13,6 +13,8 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - my_network
 
   eshop:
     build:
@@ -29,9 +31,6 @@ services:
       - db:db
     networks:
       - my-network
-
-networks:
-  my-network:
 
 volumes:
   db_data:
