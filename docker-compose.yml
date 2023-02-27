@@ -24,7 +24,6 @@ services:
     depends_on:
       - db
     environment:
-      DATABASES_DEFAULT_ENGINE: django.db.backends.mysql
       DATABASES_DEFAULT_NAME: data
       DATABASES_DEFAULT_USER: data
       DATABASES_DEFAULT_PASSWORD: data

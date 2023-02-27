@@ -22,13 +22,6 @@ RUN pip install --upgrade pip && \
 COPY . .
 
 
-# Set environment variables (Define build arguments)
-ENV DB_NAME=data \
-    DB_USER=data \
-    DB_PASSWORD=data \
-    DB_HOST=localhost \
-    DB_PORT=3306
-
 # Run migrations and start the server
 CMD python manage.py makemigrations && \
     python manage.py migrate && \
