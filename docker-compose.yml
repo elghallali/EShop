@@ -9,29 +9,36 @@ services:
       - MYSQL_DATABASE = data
       - MYSQL_USER= data
       - MYSQL_PASSWORD= data
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
 
   eshop:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     depends_on:
       - db
     environment:
-      - MYSQL_HOST=localhost
-      - MYSQL_PORT=3306
-      - MYSQL_DATABASE=data
-      - MYSQL_USER=data
+      DATABASES_DEFAULT_ENGINE: django.db.backends.mysql
+      DATABASES_DEFAULT_NAME: data
+      DATABASES_DEFAULT_USER: data
+      DATABASES_DEFAULT_PASSWORD: data
+      DATABASES_DEFAULT_HOST: mysql
+      DATABASES_DEFAULT_PORT: 3306
     volumes:
       - .:/app
     links:
       - db:db
+    networks:
+      - my-network
+
+networks:
+  my-network:
 
 volumes:
   db_data:
-
