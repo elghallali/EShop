@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'eshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME', default='data'),
-        'USER': config('DB_USER', default='data'),
-        'PASSWORD': config('DB_PASSWORD', default='data'),
+        'NAME': config('DB_NAME', default='eshop'),
+        'USER': config('DB_USER', default='root'),
+        'PASSWORD': config('DB_PASSWORD', default=''),
         'HOST': config('DB_HOST', default='localhost'),
         'PORT': config('DB_PORT', default='3306'),
         'OPTIONS': {

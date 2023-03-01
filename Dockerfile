@@ -22,8 +22,11 @@ RUN pip install --upgrade pip && \
 COPY . .
 
 
-# Run migrations and start the server
-CMD python manage.py makemigrations && \
-    python manage.py migrate && \
-    python manage.py collectstatic --noinput && \
-    python manage.py runserver 0.0.0.0:8000
+# Set environment variables (Define build arguments)
+ENV DB_NAME=eshop \
+    DB_USER=root \
+    DB_HOST=localhost \
+    DB_PORT=3306
+
+
+ENTRYPOINT ["/bin/bash","entrypoint.sh"]
