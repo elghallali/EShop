@@ -22,3 +22,7 @@ services:
       - db
     volumes:
       - .:/eShop
+
+
+volumes:
+  db_data:
