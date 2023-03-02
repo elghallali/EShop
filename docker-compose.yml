@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE : 'eshop_db'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     volumes:
-      - db_data/mysql/db:/var/lib/mysql
+      - db_data:/var/lib/mysql
   eshop:
     build:
       context: .
