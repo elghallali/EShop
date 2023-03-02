@@ -6,37 +6,24 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      - MYSQL_DATABASE : eshop_db
-      - MYSQL_USER : root
-      - MYSQL_ALLOW_EMPTY_PASSWORD: true
-    ports:
-      - "3307:3306"
+      MYSQL_DATABASE : 'eshop_db'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data/mysql/db:/var/lib/mysql
 
   eshop:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8082:8000"
+      - "8000:8000"
+    image: app:eShop
+    container_name: eShop_container
+    command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
-    environment:
-      DATABASES_DEFAULT_ENGINE: django.db.backends.mysql
-      DATABASES_DEFAULT_NAME: eshop_db
-      DATABASES_DEFAULT_USER: root
-      DATABASES_DEFAULT_HOST: mysql
-      DATABASES_DEFAULT_PORT: 3306
     volumes:
-      - .:/app
-    links:
-      - db:db
-    networks:
-      - my-network
-
-networks:
-  my-network:
+      - .:/eShop
 
 volumes:
   db_data:
