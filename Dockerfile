@@ -10,5 +10,4 @@ WORKDIR /eShop
 COPY requirements.txt requirements.txt
 
 # Install the required packages
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
